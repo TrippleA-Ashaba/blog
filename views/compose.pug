@@ -1,0 +1,11 @@
+extends partials/layout.pug 
+
+block content 
+    h1 Home
+    //- p.font-monospace= message
+    form(action="" method="post") 
+        label.form-label(for="postTitle") Title 
+        input.form-control.mb-3#title(type="text" name="postTitle" ) 
+        label.form-label(for="postBody") Post 
+        textarea.form-control.mb-3#post(name="postBody" cols="30" rows="5") 
+        button.btn.btn-primary(type="submit") Publish
