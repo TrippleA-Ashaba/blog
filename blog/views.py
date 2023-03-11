@@ -3,15 +3,15 @@ from django.http import HttpResponse
 
 
 def home_view(request):
-    return render(request, "blog/index.html")
+    return render(request, "blog/home.html")
 
 
 def tutorial_view(request):
-    return render(request, "blog/tutorial.html")
+    return render(request, "blog/posts.html")
 
 
 def tales_view(request):
-    return render(request, "blog/tutorial.html")
+    return render(request, "blog/posts.html")
 
 
 def single_post_view(request):
