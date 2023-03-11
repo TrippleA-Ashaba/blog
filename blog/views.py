@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, World! I am here at home")
+def home_view(request):
+    return render(request, "blog/index.html")
+
+
+def tutorial_view(request):
+    return render(request, "blog/tutorial.html")
