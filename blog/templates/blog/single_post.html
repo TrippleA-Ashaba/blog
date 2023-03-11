@@ -1,360 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Albert Ashaba Aheebwa | Tutorials</title>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
-		/>
-		<link rel="stylesheet" href="./assets/css/style.css" />
-	</head>
-	<body>
-		<header>
-			<nav class="navbar navbar-expand-lg bg-body-white px-5">
-				<!-- <a class="navbar-brand fs-3 fw-bold" href="#">AAA</a> -->
-				<div class="container-fluid">
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarNavAltMarkup"
-						aria-controls="navbarNavAltMarkup"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse fw-bold" id="navbarNavAltMarkup">
-						<div class="navbar-nav">
-							<a class="nav-link me-2 active" aria-current="page" href="./index.html"
-								>Home</a
-							>
-							<a class="nav-link me-2" href="./tutorial.html">Tutorials</a>
-							<a class="nav-link me-2" href="#">Tales</a>
-							<a class="nav-link me-2" href="./about.html">About</a>
+{% extends 'blog/base.html' %} {% load static %} {% block content %}
+<section class="border-bottom pb-4"></section>
+
+<section class="my-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="content p-2">
+					<div class="card-header bg-white border-0 d-flex">
+						<div class="text-muted me-3">1 day ago</div>
+
+						<div class="text-muted me-3">
+							<i class="bi bi-hand-thumbs-up-fill text-warning"></i> 15
+						</div>
+
+						<div class="text-muted me-3">
+							<i class="bi bi-chat-dots-fill text-success"></i> 32
+						</div>
+					</div>
+					<h1 class="card-title fw-bold fs-3 mb-4">
+						Special title treatment With supporting text below as a natural lead-in to
+						additional
+					</h1>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+					<p class="mb-4">
+						With supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content. With
+						supporting text below as a natural lead-in to additional content.
+					</p>
+				</div>
+				<div class="d-flex justify-content-center mb-5">
+					<div class="d-flex rounded-pill shadow-lg p-2">
+						<div class="text-muted me-3">
+							<i class="bi bi-hand-thumbs-up-fill text-warning fs-5"></i> 15
+						</div>
+
+						<div
+							class="text-muted me-3 border-start ps-3"
+							type="button"
+							data-bs-toggle="offcanvas"
+							data-bs-target="#offcanvasWithBothOptions"
+							aria-controls="offcanvasWithBothOptions"
+						>
+							<i class="bi bi-chat-dots-fill text-success fs-5"></i> 32
 						</div>
 					</div>
 				</div>
-			</nav>
-		</header>
-		<section class="border-bottom pb-4"></section>
+			</div>
 
-		<section class="my-4">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-9">
-						<div class="content p-2">
-							<div class="card-header bg-white border-0 d-flex">
-								<div class="text-muted me-3">1 day ago</div>
-
-								<div class="text-muted me-3">
-									<i class="bi bi-hand-thumbs-up-fill text-warning"></i> 15
-								</div>
-
-								<div class="text-muted me-3">
-									<i class="bi bi-chat-dots-fill text-success"></i> 32
-								</div>
-							</div>
-							<h1 class="card-title fw-bold fs-3 mb-4">
+			<div class="col border-start ps-4">
+				<div class="d-flex justify-content-around border-bottom pb-4 mb-4">
+					<div>
+						<h6 class="fs-3 fw-bold text-center">9K</h6>
+						<p class="fw-light text-center">
+							<i class="bi bi-book text-warning"></i> Stories
+						</p>
+					</div>
+					<div>
+						<h6 class="fs-3 fw-bold text-center">9K</h6>
+						<p class="fw-light text-center">
+							<i class="bi bi-vector-pen text-success"></i> Tutorials
+						</p>
+					</div>
+				</div>
+				<div class="categories">
+					<h6>Recommended topics</h6>
+					<div class="tags mt-4">
+						<a
+							class="btn btn-sm btn-light rounded-pill mb-2"
+							role="button"
+							href="https://google.com"
+							>Reading</a
+						>
+						<a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Writing</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Tutorial</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Python</a>
+						<a
+							class="btn btn-sm btn-light rounded-pill mb-2"
+							role="button"
+							href="https://google.com"
+							>Reading</a
+						>
+						<a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Writing</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Tutorial</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Python</a>
+					</div>
+				</div>
+				<div class="search mb-3">
+					<nav class="navbar bg-body-white my-5">
+						<div class="container-fluid">
+							<form class="d-flex" role="search">
+								<input
+									class="form-control me-2"
+									type="search"
+									placeholder="Search"
+									aria-label="Search"
+								/>
+								<button class="btn btn-outline-secondary" type="submit">
+									Search
+								</button>
+							</form>
+						</div>
+					</nav>
+				</div>
+				<div>
+					<h6 class="mb-3">Recommended posts</h6>
+					<div>
+						<div class="sidebar-post">
+							<div class="text-muted me-3">1 day ago</div>
+							<h5 class="mb-3">
 								Special title treatment With supporting text below as a natural
 								lead-in to additional
-							</h1>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
-							<p class="mb-4">
-								With supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content. With supporting text below as a natural lead-in
-								to additional content. With supporting text below as a natural
-								lead-in to additional content.
-							</p>
+							</h5>
 						</div>
-						<div class="d-flex justify-content-center mb-5">
-							<div class="d-flex rounded-pill shadow-lg p-2">
-								<div class="text-muted me-3">
-									<i class="bi bi-hand-thumbs-up-fill text-warning fs-5"></i> 15
-								</div>
-
-								<div
-									class="text-muted me-3 border-start ps-3"
-									type="button"
-									data-bs-toggle="offcanvas"
-									data-bs-target="#offcanvasWithBothOptions"
-									aria-controls="offcanvasWithBothOptions"
-								>
-									<i class="bi bi-chat-dots-fill text-success fs-5"></i> 32
-								</div>
-							</div>
+						<div class="sidebar-post">
+							<div class="text-muted me-3">1 day ago</div>
+							<h5 class="mb-3">
+								Special title treatment With supporting text below as a natural
+								lead-in to additional
+							</h5>
 						</div>
-					</div>
-
-					<div class="col border-start ps-4">
-						<div class="d-flex justify-content-around border-bottom pb-4 mb-4">
-							<div>
-								<h6 class="fs-3 fw-bold text-center">9K</h6>
-								<p class="fw-light text-center">
-									<i class="bi bi-book text-warning"></i> Stories
-								</p>
-							</div>
-							<div>
-								<h6 class="fs-3 fw-bold text-center">9K</h6>
-								<p class="fw-light text-center">
-									<i class="bi bi-vector-pen text-success"></i> Tutorials
-								</p>
-							</div>
+						<div class="sidebar-post">
+							<div class="text-muted me-3">1 day ago</div>
+							<h5 class="mb-3">
+								Special title treatment With supporting text below as a natural
+								lead-in to additional
+							</h5>
 						</div>
-						<div class="categories">
-							<h6>Recommended topics</h6>
-							<div class="tags mt-4">
-								<a
-									class="btn btn-sm btn-light rounded-pill mb-2"
-									role="button"
-									href="https://google.com"
-									>Reading</a
-								>
-								<a class="btn btn-sm btn-light rounded-pill mb-2" role="button"
-									>Writing</a
-								><a class="btn btn-sm btn-light rounded-pill mb-2" role="button"
-									>Tutorial</a
-								><a class="btn btn-sm btn-light rounded-pill mb-2" role="button"
-									>Python</a
-								>
-								<a
-									class="btn btn-sm btn-light rounded-pill mb-2"
-									role="button"
-									href="https://google.com"
-									>Reading</a
-								>
-								<a class="btn btn-sm btn-light rounded-pill mb-2" role="button"
-									>Writing</a
-								><a class="btn btn-sm btn-light rounded-pill mb-2" role="button"
-									>Tutorial</a
-								><a class="btn btn-sm btn-light rounded-pill mb-2" role="button"
-									>Python</a
-								>
-							</div>
-						</div>
-						<div class="search mb-3">
-							<nav class="navbar bg-body-white my-5">
-								<div class="container-fluid">
-									<form class="d-flex" role="search">
-										<input
-											class="form-control me-2"
-											type="search"
-											placeholder="Search"
-											aria-label="Search"
-										/>
-										<button class="btn btn-outline-secondary" type="submit">
-											Search
-										</button>
-									</form>
-								</div>
-							</nav>
-						</div>
-						<div>
-							<h6 class="mb-3">Recommended posts</h6>
-							<div>
-								<div class="sidebar-post">
-									<div class="text-muted me-3">1 day ago</div>
-									<h5 class="mb-3">
-										Special title treatment With supporting text below as a
-										natural lead-in to additional
-									</h5>
-								</div>
-								<div class="sidebar-post">
-									<div class="text-muted me-3">1 day ago</div>
-									<h5 class="mb-3">
-										Special title treatment With supporting text below as a
-										natural lead-in to additional
-									</h5>
-								</div>
-								<div class="sidebar-post">
-									<div class="text-muted me-3">1 day ago</div>
-									<h5 class="mb-3">
-										Special title treatment With supporting text below as a
-										natural lead-in to additional
-									</h5>
-								</div>
-								<div class="sidebar-post">
-									<div class="text-muted me-3">1 day ago</div>
-									<h5 class="mb-3">
-										Special title treatment With supporting text below as a
-										natural lead-in to additional
-									</h5>
-								</div>
-							</div>
+						<div class="sidebar-post">
+							<div class="text-muted me-3">1 day ago</div>
+							<h5 class="mb-3">
+								Special title treatment With supporting text below as a natural
+								lead-in to additional
+							</h5>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- Comment Section Offconvas -->
-		<section>
-			<div
-				class="offcanvas offcanvas-end"
-				data-bs-scroll="true"
-				tabindex="-1"
-				id="offcanvasWithBothOptions"
-				aria-labelledby="offcanvasWithBothOptionsLabel"
-			>
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Comments (2)</h5>
-					<button
-						type="button"
-						class="btn-close"
-						data-bs-dismiss="offcanvas"
-						aria-label="Close"
-					></button>
-				</div>
-				<div class="offcanvas-body">
-					<div class="mb-4">
-						<form action="" class="shadow rounded p-3">
-							<div class="mb-3">
-								<input
-									type="text"
-									class="form-control border-0"
-									id="exampleFormControlInput1"
-									placeholder="Your Name"
-								/>
-							</div>
-							<div class="mb-3">
-								<textarea
-									class="form-control border-0"
-									id="exampleFormControlTextarea1"
-									rows="3"
-									placeholder="What are your thoughts?"
-								></textarea>
-							</div>
-							<div class="d-flex d-grid gap-3 justify-content-end">
-								<button type="reset" class="btn btn-sm btn-light rounded-pill px-3">
-									Cancel
-								</button>
-								<button
-									type="submit"
-									class="btn btn-sm btn-success rounded-pill px-3"
-								>
-									Respond
-								</button>
-							</div>
-						</form>
+		</div>
+	</div>
+</section>
+<!-- Comment Section Offconvas -->
+<section>
+	<div
+		class="offcanvas offcanvas-end"
+		data-bs-scroll="true"
+		tabindex="-1"
+		id="offcanvasWithBothOptions"
+		aria-labelledby="offcanvasWithBothOptionsLabel"
+	>
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Comments (2)</h5>
+			<button
+				type="button"
+				class="btn-close"
+				data-bs-dismiss="offcanvas"
+				aria-label="Close"
+			></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="mb-4">
+				<form action="" class="shadow rounded p-3">
+					<div class="mb-3">
+						<input
+							type="text"
+							class="form-control border-0"
+							id="exampleFormControlInput1"
+							placeholder="Your Name"
+						/>
 					</div>
-					<div>
-						<div class="card mb-2">
-							<div class="card-body mb-0">
-								<blockquote class="blockquote mb-0 fs-6">
-									<p>A well-known quote, contained in a blockquote element.</p>
-									<footer class="blockquote-footer">
-										<cite title="Source Title">Albert Ashaba</cite>
-									</footer>
-								</blockquote>
+					<div class="mb-3">
+						<textarea
+							class="form-control border-0"
+							id="exampleFormControlTextarea1"
+							rows="3"
+							placeholder="What are your thoughts?"
+						></textarea>
+					</div>
+					<div class="d-flex d-grid gap-3 justify-content-end">
+						<button type="reset" class="btn btn-sm btn-light rounded-pill px-3">
+							Cancel
+						</button>
+						<button type="submit" class="btn btn-sm btn-success rounded-pill px-3">
+							Respond
+						</button>
+					</div>
+				</form>
+			</div>
+			<div>
+				<div class="card mb-2">
+					<div class="card-body mb-0">
+						<blockquote class="blockquote mb-0 fs-6">
+							<p>A well-known quote, contained in a blockquote element.</p>
+							<footer class="blockquote-footer">
+								<cite title="Source Title">Albert Ashaba</cite>
+							</footer>
+						</blockquote>
 
-								<div class="d-flex d-grid gap-3 justify-content-end">
-									<a class="btn btn-sm btn-light rounded-pill px-3" href="">
-										Reply
-									</a>
-								</div>
-							</div>
+						<div class="d-flex d-grid gap-3 justify-content-end">
+							<a class="btn btn-sm btn-light rounded-pill px-3" href=""> Reply </a>
 						</div>
-						<div class="card mb-2">
-							<div class="card-body mb-0">
-								<blockquote class="blockquote mb-0 fs-6">
-									<p>A well-known quote, contained in a blockquote element.</p>
-									<footer class="blockquote-footer">
-										<cite title="Source Title">Albert Ashaba</cite>
-									</footer>
-								</blockquote>
+					</div>
+				</div>
+				<div class="card mb-2">
+					<div class="card-body mb-0">
+						<blockquote class="blockquote mb-0 fs-6">
+							<p>A well-known quote, contained in a blockquote element.</p>
+							<footer class="blockquote-footer">
+								<cite title="Source Title">Albert Ashaba</cite>
+							</footer>
+						</blockquote>
 
-								<div class="d-flex d-grid gap-3 justify-content-end">
-									<a class="btn btn-sm btn-light rounded-pill px-3" href="">
-										Reply
-									</a>
-								</div>
-							</div>
+						<div class="d-flex d-grid gap-3 justify-content-end">
+							<a class="btn btn-sm btn-light rounded-pill px-3" href=""> Reply </a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</div>
+</section>
 
-		<section class="border-top py-3">
-			<div class="container">
-				<footer class="text-end">
-					<div>
-						Developed at
-						<a href="https://emasonsug.com/" class="text-decoration-none">
-							Emasons Uganda
-						</a>
-					</div>
-					<div>&copy;2022 - 2023 Albert Ashaba Aheebwa</div>
-					<div>
-						<a href="#" class="text-decoration-none">Source Code</a> on
-						<a href="#" class="text-decoration-none">GitHub</a>
-					</div>
-				</footer>
-			</div>
-		</section>
-
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-	</body>
-</html>
+{% endblock %}
