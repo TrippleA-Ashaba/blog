@@ -7,11 +7,11 @@ def home_view(request):
 
 
 def tutorial_view(request):
-    return render(request, "blog/posts.html")
+    return render(request, "blog/posts.html", {"category": "Tutorials"})
 
 
 def tales_view(request):
-    return render(request, "blog/posts.html")
+    return render(request, "blog/posts.html", {"category": "Tales"})
 
 
 def single_post_view(request):
