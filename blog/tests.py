@@ -20,7 +20,7 @@ class HomeViewTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertContains(
             response,
-            """<title>The TrippleA |Home</title>""",
+            """<title>The TrippleA </title>""",
         )
 
 
@@ -42,7 +42,7 @@ class TutorialViewTests(TestCase):
         response = self.client.get(reverse("tutorials"))
         self.assertContains(
             response,
-            """<title>The TrippleA |Tutorials</title>""",
+            """<title>The TrippleA | Tutorials</title>""",
         )
 
 
@@ -64,7 +64,7 @@ class TalesViewTests(TestCase):
         response = self.client.get(reverse("tales"))
         self.assertContains(
             response,
-            """<title>The TrippleA |Tutorials</title>""",
+            """<title>The TrippleA | Tales</title>""",
         )
 
 
@@ -86,5 +86,5 @@ class AboutViewTests(TestCase):
         response = self.client.get("/about/")
         self.assertContains(
             response,
-            """<title>The TrippleA |About</title>""",
+            """<title>The TrippleA | About</title>""",
         )
