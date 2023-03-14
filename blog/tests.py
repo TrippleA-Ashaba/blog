@@ -16,6 +16,13 @@ class HomeViewTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertTemplateUsed(response, "blog/home.html")
 
+    def test_template_content(self):
+        response = self.client.get(reverse("home"))
+        self.assertContains(
+            response,
+            """<title>The TrippleA |Home</title>""",
+        )
+
 
 # Testing the Tutorial Page
 class TutorialViewTests(TestCase):
@@ -30,6 +37,13 @@ class TutorialViewTests(TestCase):
     def test_template_name_correct(self):
         response = self.client.get(reverse("tutorials"))
         self.assertTemplateUsed(response, "blog/posts.html")
+
+    def test_template_content(self):
+        response = self.client.get(reverse("tutorials"))
+        self.assertContains(
+            response,
+            """<title>The TrippleA |Tutorials</title>""",
+        )
 
 
 # Testing the Tales Page
@@ -46,6 +60,13 @@ class TalesViewTests(TestCase):
         response = self.client.get(reverse("tales"))
         self.assertTemplateUsed(response, "blog/posts.html")
 
+    def test_template_content(self):
+        response = self.client.get(reverse("tales"))
+        self.assertContains(
+            response,
+            """<title>The TrippleA |Tutorials</title>""",
+        )
+
 
 # Testing the About Page
 class AboutViewTests(TestCase):
@@ -60,3 +81,10 @@ class AboutViewTests(TestCase):
     def test_template_name_correct(self):
         response = self.client.get(reverse("about"))
         self.assertTemplateUsed(response, "blog/about.html")
+
+    def test_template_content(self):
+        response = self.client.get("/about/")
+        self.assertContains(
+            response,
+            """<title>The TrippleA |About</title>""",
+        )
