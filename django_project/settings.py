@@ -10,8 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import logging.config
 import os
 from pathlib import Path
+
+from django.utils.log import DEFAULT_LOGGING
+from dotenv import load_dotenv
+
+# load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,4 +134,61 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# Logging
+# LOGGING
+
+LOGGING_CONFIG = None
+
+LOGLEVEL = os.environ.get("LOGLEVEL", "info").upper()
+
+logging.config.dictConfig(
+    {
+        "version": 1,
+        "disable_existing_logger": False,
+        # "formatters": {
+        #     "default": {
+        #         # how msgs will be formatted
+        #         "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+        #     },
+        #     "django.server": DEFAULT_LOGGING["formatters"]["django.server"],
+        # },
+        "formatters": {
+            "verbose": {
+                "format": "{name} {levelname} {asctime} {module} {process:d} {thread:d} {message}",
+                "style": "{",
+            },
+            "simple": {
+                "format": "{levelname} {message}",
+                "style": "{",
+            },
+            "django.server": DEFAULT_LOGGING["formatters"]["django.server"],
+        },
+        "handlers": {
+            # console logs to stderr
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "verbose",
+            },
+            "file": {
+                "class": "logging.FileHandler",
+                "filename": BASE_DIR / "logs/general.log",
+            },
+            "django.server": DEFAULT_LOGGING["handlers"]["django.server"],
+        },
+        "loggers": {
+            # default for all undefined Python modules
+            "": {
+                "level": "DEBUG",
+                "handlers": ["console", "file"],
+            },
+            # Our application code
+            "blog": {
+                "level": LOGLEVEL,
+                "handlers": ["console", "file"],
+                # Avoid double logging because of root logger
+                "propagate": False,
+            },
+            # Default runserver request logging
+            "django.server": DEFAULT_LOGGING["loggers"]["django.server"],
+        },
+    }
+)

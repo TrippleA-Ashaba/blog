@@ -1,8 +1,15 @@
-from django.shortcuts import render
+import logging
+
 from django.http import HttpResponse
+from django.shortcuts import render
+import datetime
+
+logger = logging.getLogger(__name__)
 
 
 def home_view(request):
+    logger.warning("Homepage accessed")
+    logger.warning(__name__)
     return render(request, "blog/home.html")
 
 

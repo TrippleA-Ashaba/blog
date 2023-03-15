@@ -8,3 +8,11 @@ footer {
 .sidebar-post {
 	font-size: 0.7rem;
 }
+
+.comment-like {
+	transition: all 500ms;
+}
+
+.comment-like :hover {
+	transform: scale(1.02);
+}
