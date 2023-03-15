@@ -1,4 +1,8 @@
 .venv
 .env
+blog/__pycache__
+blog/migrations/__pycache__
+django_project/__pycache__
+
 logs
 play.py
