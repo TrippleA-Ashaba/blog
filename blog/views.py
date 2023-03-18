@@ -8,8 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def home_view(request):
-    logger.warning("Homepage accessed")
-    logger.warning(__name__)
+    logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
     return render(request, "blog/home.html")
 
 
