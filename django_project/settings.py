@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party
     # local
+    "accounts",
     "blog",
 ]
 
@@ -192,3 +193,7 @@ logging.config.dictConfig(
         },
     }
 )
+
+
+# Custom User Model
+AUTH_USER_MODEL = "accounts.CustomUser"
