@@ -146,7 +146,7 @@
 		aria-labelledby="offcanvasWithBothOptionsLabel"
 	>
 		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Comments (2)</h5>
+			<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Comments ({{num}})</h5>
 			<button
 				type="button"
 				class="btn-close"
@@ -156,13 +156,19 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="mb-4">
-				<form action="" class="shadow rounded p-3">
+				<form action="" method="post" class="shadow rounded p-3">
+					{% csrf_token %}
 					<div class="mb-3">
 						<input
 							type="text"
 							class="form-control border-0"
 							id="exampleFormControlInput1"
-							placeholder="Your Name"
+							placeholder="Your Name (Anonymous)"
+							value="Anonymous"
+							name="name"
+							minlength="5"
+							maxlength="25"
+							required
 						/>
 					</div>
 					<div class="mb-3">
@@ -170,7 +176,10 @@
 							class="form-control border-0"
 							id="exampleFormControlTextarea1"
 							rows="3"
-							placeholder="What are your thoughts?"
+							placeholder="What are your thoughts? (max - 500 words)"
+							name="content"
+							maxlength="500"
+							required
 						></textarea>
 					</div>
 					<div class="d-flex d-grid gap-3 justify-content-end">
@@ -184,34 +193,18 @@
 				</form>
 			</div>
 			<div>
+				{% for comment in comments %}
 				<div class="card mb-2">
 					<div class="card-body mb-0">
-						<blockquote class="blockquote mb-0 fs-6">
-							<p>A well-known quote, contained in a blockquote element.</p>
+						<blockquote class="blockquote mb-1 fs-6">
+							<p>{{ comment.content |linebreaks }}</p>
 							<footer class="blockquote-footer">
-								<cite title="Source Title">Albert Ashaba</cite>
+								<cite title="Source Title">{{ comment.name }}</cite>
 							</footer>
 						</blockquote>
-
-						<div class="d-flex d-grid gap-3 justify-content-end">
-							<a class="btn btn-sm btn-light rounded-pill px-3" href=""> Reply </a>
-						</div>
 					</div>
 				</div>
-				<div class="card mb-2">
-					<div class="card-body mb-0">
-						<blockquote class="blockquote mb-0 fs-6">
-							<p>A well-known quote, contained in a blockquote element.</p>
-							<footer class="blockquote-footer">
-								<cite title="Source Title">Albert Ashaba</cite>
-							</footer>
-						</blockquote>
-
-						<div class="d-flex d-grid gap-3 justify-content-end">
-							<a class="btn btn-sm btn-light rounded-pill px-3" href=""> Reply </a>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
