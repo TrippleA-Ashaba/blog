@@ -1,7 +1,7 @@
 import datetime
 import logging
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import CommentForm
@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 def home_view(request):
     # logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
     posts = Post.objects.all()
-    return render(request, "blog/home.html", {"posts": posts})
+    num_of_posts = posts.count()
+    return render(request, "blog/home.html", {"posts": posts, "num": num_of_posts})
 
 
 def tutorial_view(request):
@@ -36,6 +37,7 @@ def single_post_view(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
+            return HttpResponseRedirect(post.get_absolute_url())
 
     return render(
         request,
