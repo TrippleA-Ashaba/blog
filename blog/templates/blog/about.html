@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+<!-- load static -->
+{% load static %}
+<!-- Content starts here -->
+
+{% block content %}
+<section class="border-bottom pb-4">
+	<div class="hero text-center text-black my-2">
+		<h1 class="fw-bold">
+			<span class="text-danger opacity-75">&lt;</span> ABOUT
+			<span class="text-danger opacity-75">/&gt;</span>
+		</h1>
+		<a href="" class="me-2"
+			><img src="https://img.shields.io/badge/-Email%20Me-676FA3" alt="" srcset=""
+		/></a>
+		<a href="https://twitter.com/ashabaheebwa" class="me-2">
+			<img
+				alt="Twitter URL"
+				src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fashabaheebwa"
+		/></a>
+		<a href="https://github.com/TrippleA-Ashaba" class="me-2"
+			><img
+				alt="GitHub followers"
+				src="https://img.shields.io/github/followers/TrippleA-Ashaba?style=social"
+		/></a>
+		<a href="" class="me-2"
+			><img src="https://img.shields.io/badge/-LinkedIn-blue" alt="" srcset=""
+		/></a>
+	</div>
+</section>
+
+<section class="my-4">
+	<div class="container">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-lg-8">
+				<div class="text-center">
+					<p>
+						Founded in 2022 by
+						<a
+							href="{% url 'home' %}"
+							class="text-decoration-underline text-black fw-bold"
+							>Albert Ashaba Aheebwa</a
+						>, The AAA Blog is your how-not-to guide for developing software by
+						self-taught developers. We rehash tales of cataclysmic development, from
+						project management gone fabulously wrong to incomprehensible coding choices.
+					</p>
+					<p>
+						This blog is for those starting out and are trying to hack their way into
+						this field with too much to learn and too many resources to choose from in
+						so little time.
+					</p>
+					<p>
+						This is not a school, but rather a hitchhiker's guide on what not-to-do if
+						you wish not to fail at software development before you even start.
+					</p>
+					<h4>Don't Panic!</h4>
+					<p class="fst-italic fw-light">
+						<span class="fw-bold me-2">NOTE:</span>
+						You might have noticed that code examples and tutorials in this blog are
+						weiredly most - if not all - written in the python programming language.
+						This is because your lovely author, even though he's multilingual, prefers
+						the easiest and best programming language...
+						<span class="fw-bold ms-2 me-2">#EverybodyLovesPython</span>
+					</p>
+				</div>
+			</div>
+			<div class="col"></div>
+		</div>
+	</div>
+</section>
+{% endblock %}

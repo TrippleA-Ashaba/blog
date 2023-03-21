@@ -1,0 +1,22 @@
+footer {
+	font-size: 13px;
+}
+
+.sidebar-post h5 {
+	font-size: 0.9rem;
+}
+.sidebar-post {
+	font-size: 0.7rem;
+}
+
+.comment-like {
+	transition: all 500ms;
+}
+
+.comment-like :hover {
+	transform: scale(1.02);
+}
+
+img.img-center {
+	display: none;
+}

@@ -1,0 +1,190 @@
+{% extends 'blog/base.html' %}
+<!-- load static -->
+{% load static %}
+<!-- Content starts here -->
+
+{% block content %}
+<section class="border-bottom pb-4">
+	<div class="hero text-center text-black my-5">
+		<h1 class="fw-bold">
+			<span class="text-danger opacity-75">&lt;</span> The TrippleA
+			<span class="fw-light fst-italic">JOURNAL </span
+			><span class="text-danger opacity-75">/&gt;</span>
+		</h1>
+		<p class="fw-light">
+			Features Tutorials and somewhat tales of my challenges as I try to make it in this
+			software development industry.
+		</p>
+		<a href="" class="me-2"
+			><img src="https://img.shields.io/badge/-Email%20Me-676FA3" alt="" srcset=""
+		/></a>
+		<a href="https://twitter.com/ashabaheebwa" class="me-2"
+			><img
+				alt="Twitter URL"
+				src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fashabaheebwa"
+		/></a>
+		<a href="https://github.com/TrippleA-Ashaba" class="me-2"
+			><img
+				alt="GitHub followers"
+				src="https://img.shields.io/github/followers/TrippleA-Ashaba?style=social"
+		/></a>
+		<a href="" class="me-2"
+			><img src="https://img.shields.io/badge/-LinkedIn-blue" alt="" srcset=""
+		/></a>
+	</div>
+</section>
+
+<section class="my-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="content">
+					{% if posts %} {% for post in posts %}
+					<div class="card mb-2 border-0 border-bottom py-2">
+						<div class="card-header bg-white border-0 d-flex">
+							<div class="text-muted me-3">{{ post.date_published }}</div>
+
+							<div class="text-muted me-3">
+								<i class="bi bi-hand-thumbs-up-fill text-warning"></i> 15
+							</div>
+
+							<div class="text-muted me-3">
+								<i class="bi bi-chat-dots-fill text-success"></i> 32
+							</div>
+						</div>
+						<div class="card-body">
+							<a
+								href="{{post.get_absolute_url}}"
+								class="text-decoration-none text-dark"
+							>
+								<h5 class="card-title fw-bold">{{post.title}}</h5>
+							</a>
+							<div class="row">
+								<div class="col-md-10">
+									<p class="card-text">
+										{{post.content | truncatewords:50|safe}}
+									</p>
+								</div>
+								{% if post.image %}
+								<div class="col-2 d-none d-md-block">
+									<img
+										class="img-fluid img-thumbnail"
+										src="{{post.image.url}}"
+										alt=""
+										srcset=""
+									/>
+								</div>
+								<!-- For When a post doesn't have a thumbnail -->
+								<!-- 
+								<div class="col-2 d-none d-md-block">
+									<img
+										class="img-fluid img-thumbnail"
+										src="{% static 'blog/assets/img/ray-so-export.png' %}"
+										alt=""
+										srcset=""
+									/>
+								</div> -->
+								{% endif %}
+							</div>
+
+							<div class="tags mt-4">
+								<a
+									class="btn btn-sm btn-light rounded-pill"
+									role="button"
+									href="https://google.com"
+									>Reading</a
+								>
+								<a class="btn btn-sm btn-light rounded-pill" role="button"
+									>Writing</a
+								><a class="btn btn-sm btn-light rounded-pill" role="button"
+									>Tutorial</a
+								><a class="btn btn-sm btn-light rounded-pill" role="button"
+									>Python</a
+								>
+							</div>
+						</div>
+					</div>
+					{% endfor %} {% endif %}
+				</div>
+				<div class="pages my-5">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<li class="page-item disabled">
+								<a class="page-link">Previous</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link text-black" href="#">1</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link text-black" href="#">2</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link text-black" href="#">3</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link text-black" href="#">Next</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<!-- =================== SIDEBAR ================================================ -->
+
+			<div class="col border-start ps-4">
+				<div class="d-flex justify-content-around border-bottom pb-4 mb-4">
+					<div>
+						<h6 class="fs-3 fw-bold text-center">{{num}}</h6>
+						<p class="fw-light text-center">
+							<i class="bi bi-book text-warning"></i> Stories
+						</p>
+					</div>
+					<div>
+						<h6 class="fs-3 fw-bold text-center">{{num}}</h6>
+						<p class="fw-light text-center">
+							<i class="bi bi-vector-pen text-success"></i> Tutorials
+						</p>
+					</div>
+				</div>
+				<div class="categories">
+					<h6>Recommended topics</h6>
+					<div class="tags mt-4">
+						<a
+							class="btn btn-sm btn-light rounded-pill mb-2"
+							role="button"
+							href="https://google.com"
+							>Reading</a
+						>
+						<a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Writing</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Tutorial</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Python</a>
+						<a
+							class="btn btn-sm btn-light rounded-pill mb-2"
+							role="button"
+							href="https://google.com"
+							>Reading</a
+						>
+						<a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Writing</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Tutorial</a
+						><a class="btn btn-sm btn-light rounded-pill mb-2" role="button">Python</a>
+					</div>
+				</div>
+				<nav class="navbar bg-body-white my-5">
+					<div class="container-fluid">
+						<form class="d-flex" role="search">
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Search"
+								aria-label="Search"
+							/>
+							<button class="btn btn-outline-secondary" type="submit">Search</button>
+						</form>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
