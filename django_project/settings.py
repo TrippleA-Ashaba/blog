@@ -46,7 +46,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd party
+    "ckeditor",  # pip install django-ckeditor
+    "ckeditor_uploader",  # for editing posts using a richtextfield
+    "django_cleanup.apps.CleanupConfig",  # for removing uploaded files on post delete "pip install django-cleanup"
     # local
+    "accounts",
     "blog",
 ]
 
@@ -128,6 +132,27 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = "/media/"
+
+CKEDITOR_JQUERY_URL = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
+        "extraPlugins": "codesnippet",
+        "text-align": "justify",
+    },
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -192,3 +217,7 @@ logging.config.dictConfig(
         },
     }
 )
+
+
+# Custom User Model
+AUTH_USER_MODEL = "accounts.CustomUser"
