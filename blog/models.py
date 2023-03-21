@@ -13,6 +13,7 @@ class Post(models.Model):
         null=False,
         unique=True,
     )
+    image = models.ImageField(null=True, blank=True, upload_to="covers")
     content = RichTextUploadingField()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date_published = models.DateTimeField(auto_now_add=True)

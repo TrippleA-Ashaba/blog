@@ -46,8 +46,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd party
-    "ckeditor",
-    "ckeditor_uploader",
+    "ckeditor",  # pip install django-ckeditor
+    "ckeditor_uploader",  # for editing posts using a richtextfield
+    "django_cleanup.apps.CleanupConfig",  # for removing uploaded files on post delete "pip install django-cleanup"
     # local
     "accounts",
     "blog",
@@ -138,10 +139,18 @@ MEDIA_URL = "/media/"
 CKEDITOR_JQUERY_URL = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+
+
 CKEDITOR_CONFIGS = {
-    "default": {"toolbar": "full", "extraPlugins": "codesnippet"},
+    "default": {
+        "toolbar": "full",
+        "extraPlugins": "codesnippet",
+        "text-align": "justify",
+    },
 }
 
 # Default primary key field type

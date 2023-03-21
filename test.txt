@@ -6,3 +6,6 @@ Getting code coverage
 
     // for writing to html
     coverage html
+
+CKEDITOR
+    // add class='img-center img-fluid' while uploading images

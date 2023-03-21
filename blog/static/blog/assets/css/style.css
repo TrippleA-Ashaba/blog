@@ -16,3 +16,7 @@ footer {
 .comment-like :hover {
 	transform: scale(1.02);
 }
+
+img.img-center {
+	display: none;
+}
