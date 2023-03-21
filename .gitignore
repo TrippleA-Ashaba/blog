@@ -6,3 +6,7 @@ django_project/__pycache__
 
 logs
 play.py
+db.sqlite3
+media/
+accounts/__pycache__
+accounts/migrations/__pycache__

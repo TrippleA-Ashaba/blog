@@ -1,16 +1,20 @@
+import datetime
 import logging
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-import datetime
+
+from .forms import CommentForm
+from .models import Comment, Post
 
 logger = logging.getLogger(__name__)
 
 
 def home_view(request):
-    logger.warning("Homepage accessed")
-    logger.warning(__name__)
-    return render(request, "blog/home.html")
+    # logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
+    posts = Post.objects.all()
+    num_of_posts = posts.count()
+    return render(request, "blog/home.html", {"posts": posts, "num": num_of_posts})
 
 
 def tutorial_view(request):
@@ -23,8 +27,23 @@ def tales_view(request):
     return render(request, "blog/posts.html", {"title": "| Tales", "category": "Tales"})
 
 
-def single_post_view(request):
-    return render(request, "blog/single_post.html")
+def single_post_view(request, slug):
+    post = Post.objects.get(slug=slug)
+    comments = Comment.objects.filter(post=post)
+    num_of_comments = comments.count()
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return HttpResponseRedirect(post.get_absolute_url())
+
+    return render(
+        request,
+        "blog/single_post.html",
+        {"post": post, "comments": comments, "num": num_of_comments},
+    )
 
 
 def about_view(request):
