@@ -3,7 +3,7 @@
 blog/__pycache__
 blog/migrations/__pycache__
 django_project/__pycache__
-
+accounts/__pycahe__
 logs
 play.py
 db.sqlite3
