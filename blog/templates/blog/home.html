@@ -40,19 +40,11 @@
 			<div class="col-lg-9">
 				<div class="content">
 					{% if posts %} {% for post in posts %}
-					<div class="card mb-2 border-0 border-bottom py-2">
-						<div class="card-header bg-white border-0 d-flex">
-							<div class="text-muted me-3">{{ post.date_published }}</div>
-
-							<div class="text-muted me-3">
-								<i class="bi bi-hand-thumbs-up-fill text-warning"></i> 15
-							</div>
-
-							<div class="text-muted me-3">
-								<i class="bi bi-chat-dots-fill text-success"></i> 32
-							</div>
+					<div class="card mb-2 border-0 border-bottom py-3">
+						<div class="card-header bg-white text-muted border-0 d-flex">
+							{{ post.date_published }}
 						</div>
-						<div class="card-body">
+						<div class="card-body py-0">
 							<a
 								href="{{post.get_absolute_url}}"
 								class="text-decoration-none text-dark"
@@ -87,7 +79,7 @@
 								{% endif %}
 							</div>
 
-							<div class="tags mt-4">
+							<div class="tags mt-2">
 								<a
 									class="btn btn-sm btn-light rounded-pill"
 									role="button"
