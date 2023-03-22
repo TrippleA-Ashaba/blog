@@ -4,6 +4,8 @@ from django.urls import reverse
 
 from accounts.models import CustomUser
 
+STATUS_CHOICES = [("d", "Draft"), ("p", "Published")]
+
 
 # POST model
 class Post(models.Model):
@@ -17,6 +19,11 @@ class Post(models.Model):
     content = RichTextUploadingField()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date_published = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=1,
+        choices=STATUS_CHOICES,
+        default="d",
+    )
 
     class Meta:
         ordering = ("-date_published",)

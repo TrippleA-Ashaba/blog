@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 def home_view(request):
     # logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
-    posts = Post.objects.all()
+    posts = Post.objects.filter(status="p")
     num_of_posts = posts.count()
     return render(request, "blog/home.html", {"posts": posts, "num": num_of_posts})
 
