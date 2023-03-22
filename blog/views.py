@@ -16,9 +16,6 @@ def home_view(request):
     posts = Post.objects.filter(status="p")
     num_of_posts = posts.count()
     tags = Tag.objects.all()[:10]
-    print("============================================================")
-    print(tags)
-    print("============================HERE================================")
     return render(
         request, "blog/home.html", {"posts": posts, "num": num_of_posts, "tags": tags}
     )
@@ -38,11 +35,7 @@ def single_post_view(request, slug):
     post = Post.objects.get(slug=slug)
     comments = Comment.objects.filter(post=post)
     num_of_comments = comments.count()
-    tags = post.tags.names()
-
-    print("-----------------------HERE------------------------")
-    print(tag for tag in tags)
-    print("-----------------------And HERE------------------------")
+    tags = Tag.objects.all()[:10]
 
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -55,7 +48,7 @@ def single_post_view(request, slug):
     return render(
         request,
         "blog/single_post.html",
-        {"post": post, "comments": comments, "num": num_of_comments},
+        {"post": post, "comments": comments, "num": num_of_comments, "tags": tags},
     )
 
 
