@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "ckeditor",  # pip install django-ckeditor
     "ckeditor_uploader",  # for editing posts using a richtextfield
     "django_cleanup.apps.CleanupConfig",  # for removing uploaded files on post delete "pip install django-cleanup"
+    "taggit",  # for adding tags'
     # local
     "accounts",
     "blog",
@@ -152,6 +153,9 @@ CKEDITOR_CONFIGS = {
         "text-align": "justify",
     },
 }
+
+# Tagging Manager
+TAGGIT_CASE_INSENSITIVE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
