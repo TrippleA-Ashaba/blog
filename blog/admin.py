@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from accounts.models import CustomUser
 
-from .models import Comment, Post
+from blog.models import Comment, Post
 
 
 # Register your models here.

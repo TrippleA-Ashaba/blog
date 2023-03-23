@@ -1,6 +1,12 @@
 from django.urls import path
 
-from .views import about_view, home_view, search_view, single_post_view, tutorial_view
+from blog.views import (
+    about_view,
+    home_view,
+    search_view,
+    single_post_view,
+    tutorial_view,
+)
 
 urlpatterns = [
     path("", home_view, name="home"),

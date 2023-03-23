@@ -1,14 +1,13 @@
-import datetime
 import logging
 
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from taggit.models import Tag
 
-from .forms import CommentForm
-from .models import Comment, Post
+from blog.forms import CommentForm
+from blog.models import Comment, Post
 
 logger = logging.getLogger(__name__)
 

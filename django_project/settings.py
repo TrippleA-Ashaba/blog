@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "ckeditor_uploader",  # for editing posts using a richtextfield
     "django_cleanup.apps.CleanupConfig",  # for removing uploaded files on post delete "pip install django-cleanup"
     "taggit",  # for adding tags'
+    "rest_framework",  # for building webAPIs and Serialization
     # local
     "accounts",
     "blog",
