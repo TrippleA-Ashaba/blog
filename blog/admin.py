@@ -12,6 +12,7 @@ class PostAdmin(admin.ModelAdmin):
         "title",
         "status",
         "category",
+        "tag_list",
         "date_published",
     )
     prepopulated_fields = {"slug": ("title",)}
@@ -21,6 +22,12 @@ class PostAdmin(admin.ModelAdmin):
     @admin.action(description="Mark selected posts as Published")
     def make_published(self, request, queryset):
         queryset.update(status="p")
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related("tags")
+
+    def tag_list(self, obj):
+        return ", ".join(o.name for o in obj.tags.all())
 
 
 @admin.register(Comment)
