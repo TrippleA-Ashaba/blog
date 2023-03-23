@@ -7,6 +7,7 @@ from django.shortcuts import render
 from taggit.models import Tag
 from .forms import CommentForm
 from .models import Comment, Post
+from django.core.paginator import Paginator
 
 logger = logging.getLogger(__name__)
 
@@ -14,16 +15,29 @@ logger = logging.getLogger(__name__)
 def home_view(request):
     # logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
     posts = Post.objects.filter(status="p")
+    tut_posts = Post.objects.filter(status="p", category="t")
     num_of_posts = posts.count()
     tags = Tag.objects.all()[:10]
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     return render(
-        request, "blog/home.html", {"posts": posts, "num": num_of_posts, "tags": tags}
+        request,
+        "blog/home.html",
+        {"posts": page_obj, "num": num_of_posts, "tags": tags, "tuts": tut_posts},
     )
 
 
 def tutorial_view(request):
-    posts = Post.objects.filter(category="t")
+    posts = Post.objects.filter(status="p", category="t")
+    all_posts = Post.objects.filter(status="p")
+
     tags = Tag.objects.all()[:10]
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    num_of_posts = all_posts.count()
 
     return render(
         request,
@@ -31,14 +45,18 @@ def tutorial_view(request):
         {
             "title": "| Tutorials",
             "category": "Tutorials",
-            "posts": posts,
+            "posts": page_obj,
             "tags": tags,
+            "num": num_of_posts,
         },
     )
 
 
 def single_post_view(request, slug):
     post = Post.objects.get(slug=slug)
+    posts = Post.objects.filter(status="p", category=post.category).exclude(
+        title=post.title
+    )[:5]
     comments = Comment.objects.filter(post=post)
     num_of_comments = comments.count()
     tags = Tag.objects.all()[:10]
@@ -54,7 +72,13 @@ def single_post_view(request, slug):
     return render(
         request,
         "blog/single_post.html",
-        {"post": post, "comments": comments, "num": num_of_comments, "tags": tags},
+        {
+            "post": post,
+            "comments": comments,
+            "num": num_of_comments,
+            "tags": tags,
+            "posts": posts,
+        },
     )
 
 

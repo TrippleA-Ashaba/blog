@@ -126,34 +126,21 @@
 				<div>
 					<h6 class="mb-3">Recommended posts</h6>
 					<div>
+						{% if posts %}
+						<!--  -->
+						{% for post in posts %}
 						<div class="sidebar-post">
-							<div class="text-muted me-3">1 day ago</div>
-							<h5 class="mb-3">
-								Special title treatment With supporting text below as a natural
-								lead-in to additional
-							</h5>
+							<div class="text-muted me-3">{{post.date_published |timesince}}</div>
+							<a
+								href="{{post.get_absolute_url}}"
+								class="text-decoration-none text-dark"
+							>
+								<h5 class="mb-3">{{post.title}}</h5>
+							</a>
 						</div>
-						<div class="sidebar-post">
-							<div class="text-muted me-3">1 day ago</div>
-							<h5 class="mb-3">
-								Special title treatment With supporting text below as a natural
-								lead-in to additional
-							</h5>
-						</div>
-						<div class="sidebar-post">
-							<div class="text-muted me-3">1 day ago</div>
-							<h5 class="mb-3">
-								Special title treatment With supporting text below as a natural
-								lead-in to additional
-							</h5>
-						</div>
-						<div class="sidebar-post">
-							<div class="text-muted me-3">1 day ago</div>
-							<h5 class="mb-3">
-								Special title treatment With supporting text below as a natural
-								lead-in to additional
-							</h5>
-						</div>
+						{% endfor%}
+						<!--  -->
+						{% endif %}
 					</div>
 				</div>
 			</div>

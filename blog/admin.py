@@ -9,8 +9,8 @@ class PostAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "status",
+        "category",
         "date_published",
-        # "category",
     )
     prepopulated_fields = {"slug": ("title",)}
     actions = ["make_published"]
