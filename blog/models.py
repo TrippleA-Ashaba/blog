@@ -2,6 +2,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 from taggit.managers import TaggableManager
+
 from accounts.models import CustomUser
 
 STATUS_CHOICES = [("d", "Draft"), ("p", "Published")]
