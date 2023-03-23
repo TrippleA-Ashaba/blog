@@ -1,13 +1,14 @@
 import datetime
 import logging
 
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-
 from taggit.models import Tag
+
 from .forms import CommentForm
 from .models import Comment, Post
-from django.core.paginator import Paginator
 
 logger = logging.getLogger(__name__)
 
@@ -84,3 +85,32 @@ def single_post_view(request, slug):
 
 def about_view(request):
     return render(request, "blog/about.html", {"title": "| About"})
+
+
+def search_view(request):
+    query = request.GET.get("q")
+    if query:
+        posts = Post.objects.filter(
+            Q(title__icontains=query)
+            | Q(content__icontains=query)
+            | Q(tags__name__icontains=query)
+        ).distinct()
+
+        print(
+            "========================================= START ============================="
+        )
+        print(
+            "========================================= STOP ============================="
+        )
+        # return render(
+        #     request,
+        #     "blog/search_results.html",
+        #     {"title": "search results", "search": query, "posts": posts},
+        # )
+    # return query
+
+    return render(
+        request,
+        "blog/search_results.html",
+        {"title": "search results", "search": query, "posts": posts},
+    )
