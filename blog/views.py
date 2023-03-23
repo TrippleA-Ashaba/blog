@@ -97,21 +97,29 @@ def search_view(request):
             | Q(tags__name__icontains=query)
         ).distinct()
 
-        print(
-            "========================================= START ============================="
-        )
-        print(
-            "========================================= STOP ============================="
-        )
-        # return render(
-        #     request,
-        #     "blog/search_results.html",
-        #     {"title": "search results", "search": query, "posts": posts},
-        # )
-    # return query
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
     return render(
         request,
         "blog/search_results.html",
-        {"title": "search results", "search": query, "posts": posts, "tags": tags},
+        {"title": "search results", "search": query, "posts": page_obj, "tags": tags},
+    )
+
+
+def search_tags_view(request):
+    tags = Tag.objects.all()
+    query = request.GET.get("q")
+    if query:
+        posts = Post.objects.filter(Q(tags__name__icontains=query)).distinct()
+
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(
+        request,
+        "blog/posts.html",
+        {"title": "search results", "category": query, "posts": page_obj, "tags": tags},
     )
