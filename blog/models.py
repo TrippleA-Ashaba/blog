@@ -5,6 +5,7 @@ from taggit.managers import TaggableManager
 from accounts.models import CustomUser
 
 STATUS_CHOICES = [("d", "Draft"), ("p", "Published")]
+CATEGORY_CHOICES = [("t", "Tutorial"), ("o", "Other")]
 
 
 # POST model
@@ -24,6 +25,11 @@ class Post(models.Model):
         max_length=1,
         choices=STATUS_CHOICES,
         default="d",
+    )
+    category = models.CharField(
+        max_length=1,
+        choices=CATEGORY_CHOICES,
+        default="o",
     )
 
     class Meta:

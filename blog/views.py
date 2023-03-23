@@ -22,13 +22,19 @@ def home_view(request):
 
 
 def tutorial_view(request):
+    posts = Post.objects.filter(category="t")
+    tags = Tag.objects.all()[:10]
+
     return render(
-        request, "blog/posts.html", {"title": "| Tutorials", "category": "Tutorials"}
+        request,
+        "blog/posts.html",
+        {
+            "title": "| Tutorials",
+            "category": "Tutorials",
+            "posts": posts,
+            "tags": tags,
+        },
     )
-
-
-def tales_view(request):
-    return render(request, "blog/posts.html", {"title": "| Tales", "category": "Tales"})
 
 
 def single_post_view(request, slug):
