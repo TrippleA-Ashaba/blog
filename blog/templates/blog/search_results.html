@@ -1,44 +1,17 @@
 {% extends 'blog/base.html' %}
-<!--  -->
 <!-- load static -->
 {% load static %}
 <!-- Content starts here -->
-
 {% block content %}
-<section class="border-bottom pb-4">
-	<div class="hero text-center text-black my-5">
-		<h1 class="fw-bold">
-			<span class="text-danger opacity-75">&lt;</span> The TrippleA
-			<span class="fw-light fst-italic">JOURNAL </span
-			><span class="text-danger opacity-75">/&gt;</span>
-		</h1>
-		<p class="fw-light">
-			Features Tutorials and somewhat tales of my challenges as I try to make it in this
-			software development industry.
-		</p>
-		<a href="" class="me-2"
-			><img src="https://img.shields.io/badge/-Email%20Me-676FA3" alt="" srcset=""
-		/></a>
-		<a href="https://twitter.com/ashabaheebwa" class="me-2"
-			><img
-				alt="Twitter URL"
-				src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fashabaheebwa"
-		/></a>
-		<a href="https://github.com/TrippleA-Ashaba" class="me-2"
-			><img
-				alt="GitHub followers"
-				src="https://img.shields.io/github/followers/TrippleA-Ashaba?style=social"
-		/></a>
-		<a href="" class="me-2"
-			><img src="https://img.shields.io/badge/-LinkedIn-blue" alt="" srcset=""
-		/></a>
-	</div>
-</section>
+<section class="border-bottom pb-4"></section>
 
 <section class="my-4">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9">
+				<div class="fst-italic fs-2 px-3">
+					Results for <span class="fw-bold"> {{ search }} </span>
+				</div>
 				<div class="content">
 					{% if posts %} {% for post in posts %}
 					<div class="card mb-2 border-0 border-bottom py-3">
@@ -74,7 +47,7 @@
 								<div class="d-inline-flex">
 									<a
 										class="btn btn-sm py-0 me-1 btn-light rounded-pill d-block"
-										href="{% url 'search_tag' %}?q={{tag}}"
+										href="https://google.com"
 									>
 										{{tag}}
 									</a>
@@ -136,6 +109,7 @@
 			</div>
 
 			<!-- =================== SIDEBAR ================================================ -->
+
 			<div class="col border-start ps-4">{% include 'blog/side_bar.html' %}</div>
 		</div>
 	</div>

@@ -8,6 +8,10 @@
 		<title>The TrippleA {% block title %}{{ title }}{% endblock %}</title>
 		<link
 			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
+		/>
+		<link
+			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 		/>
 		<link
@@ -16,6 +20,14 @@
 		/>
 		<link rel="stylesheet" href="{% static 'blog/assets/css/style.css' %}" />
 		{% block link %}{% endblock %}
+		<link
+			rel="stylesheet"
+			href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css"
+		/>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+		<script>
+			hljs.initHighlightingOnLoad();
+		</script>
 	</head>
 	<body>
 		<header>
@@ -42,7 +54,6 @@
 								>Home</a
 							>
 							<a class="nav-link me-2" href="{% url 'tutorials' %}">Tutorials</a>
-							<a class="nav-link me-2" href="{% url 'tales' %}">Tales</a>
 							<a class="nav-link me-2" href="{% url 'about' %}">About</a>
 						</div>
 					</div>
