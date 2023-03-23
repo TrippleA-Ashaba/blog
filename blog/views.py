@@ -15,10 +15,10 @@ logger = logging.getLogger(__name__)
 
 def home_view(request):
     # logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
-    posts = Post.objects.filter(status="p")
+    posts = Post.objects.prefetch_related("tags").filter(status="p")
     tut_posts = Post.objects.filter(status="p", category="t")
     num_of_posts = posts.count()
-    tags = Tag.objects.all()[:10]
+    tags = Tag.objects.all()
     paginator = Paginator(posts, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
@@ -88,6 +88,8 @@ def about_view(request):
 
 
 def search_view(request):
+    tags = Tag.objects.all()
+
     query = request.GET.get("q")
     if query:
         posts = Post.objects.filter(
@@ -112,5 +114,5 @@ def search_view(request):
     return render(
         request,
         "blog/search_results.html",
-        {"title": "search results", "search": query, "posts": posts},
+        {"title": "search results", "search": query, "posts": posts, "tags": tags},
     )
