@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.views.generic import ListView
 from taggit.models import Tag
 
 from blog.forms import CommentForm
@@ -11,22 +12,24 @@ from blog.models import Comment, Post
 
 logger = logging.getLogger(__name__)
 
+NUM_OF_POSTS = Post.objects.filter(status="p").count()
+NUM_OF_TUTORIAL_POSTS = Post.objects.filter(status="p", category="t").count()
+TAGS = Tag.objects.all()
 
-def home_view(request):
-    # logger.info(f"{logger}  Homepage accessed at {datetime.datetime.now()}")
-    posts = Post.objects.prefetch_related("tags").filter(status="p")
-    tut_posts = Post.objects.filter(status="p", category="t")
-    num_of_posts = posts.count()
-    tags = Tag.objects.all()
-    paginator = Paginator(posts, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
 
-    return render(
-        request,
-        "blog/home.html",
-        {"posts": page_obj, "num": num_of_posts, "tags": tags, "tuts": tut_posts},
-    )
+class HomeView(ListView):
+    model = Post
+    template_name = "blog/home.html"
+    context_object_name = "posts"
+    extra_context = {
+        "num_of_posts": NUM_OF_POSTS,
+        "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
+        "tags": TAGS,
+    }
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Post.objects.prefetch_related("tags").filter(status="p")
 
 
 def tutorial_view(request):

@@ -165,9 +165,14 @@
 					<div class="card-body mb-0">
 						<blockquote class="blockquote mb-1 fs-6">
 							<p>{{ comment.content |linebreaks }}</p>
-							<footer class="blockquote-footer">
-								<cite title="Source Title">{{ comment.name }}</cite>
-							</footer>
+							<div class="d-flex justify-content-between">
+								<p class="">
+									<cite title="Source Title me-auto">
+										&#8212; {{ comment.name }}</cite
+									>
+								</p>
+								<p class="">{{comment.date_published |timesince}} ago</p>
+							</div>
 						</blockquote>
 					</div>
 				</div>
