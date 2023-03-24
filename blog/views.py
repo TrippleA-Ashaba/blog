@@ -4,7 +4,9 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.urls import reverse
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import FormMixin
 from taggit.models import Tag
 
 from blog.forms import CommentForm
@@ -21,6 +23,8 @@ PAGES = 10
 
 # Home page view
 class HomeView(ListView):
+    """Returns a list of all the posts and renders them to home.html"""
+
     model = Post
     template_name = "blog/home.html"
     context_object_name = "posts"
@@ -35,11 +39,15 @@ class HomeView(ListView):
         return Post.objects.prefetch_related("tags").filter(status="p")
 
 
+# Tutorial view
 class TutorialPostsView(ListView):
+    """Returns a list of all the tutorial posts and renders them to post.html"""
+
     model = Post
     template_name = "blog/posts.html"
     context_object_name = "posts"
     extra_context = {
+        "title": "| Tutorials",
         "num_of_posts": NUM_OF_POSTS,
         "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
         "tags": TAGS,
@@ -50,15 +58,23 @@ class TutorialPostsView(ListView):
         return Post.objects.prefetch_related("tags").filter(status="p", category="t")
 
 
+# Detailed view of a particular post
 def single_post_view(request, slug):
+    """Returns a single post view for a given post slug"""
+
+    # get the current post
     post = Post.objects.get(slug=slug)
-    posts = Post.objects.filter(status="p", category=post.category).exclude(
+
+    # get the last five posts of similar category
+    recommended_posts = Post.objects.filter(status="p", category=post.category).exclude(
         title=post.title
     )[:5]
+
+    # get the comments of the post
     comments = Comment.objects.filter(post=post)
     num_of_comments = comments.count()
-    tags = Tag.objects.all()[:10]
 
+    # Handle comments from users and save them in the database
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -73,9 +89,11 @@ def single_post_view(request, slug):
         {
             "post": post,
             "comments": comments,
-            "num": num_of_comments,
-            "tags": tags,
-            "posts": posts,
+            "tags": TAGS,
+            "posts": recommended_posts,
+            "num_of_comments": num_of_comments,
+            "num_of_posts": NUM_OF_POSTS,
+            "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
         },
     )
 

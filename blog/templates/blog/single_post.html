@@ -20,7 +20,7 @@
 						</div>
 						<div class="text-muted me-3">{{ post.date_published |date:'M d, Y'}}</div>
 						<div class="text-muted me-3">
-							<i class="bi bi-chat-dots-fill text-success"></i> {{num}}
+							<i class="bi bi-chat-dots-fill text-success"></i> {{num_of_comments}}
 						</div>
 					</div>
 					<h1 class="card-title fw-bold fs-3 mb-4">{{ post.title }}</h1>
@@ -70,7 +70,7 @@
 							data-bs-target="#offcanvasWithBothOptions"
 							aria-controls="offcanvasWithBothOptions"
 						>
-							Leave a Comment ({{num}})
+							Leave a Comment ({{num_of_comments}})
 						</div>
 					</div>
 				</div>
@@ -113,7 +113,9 @@
 		aria-labelledby="offcanvasWithBothOptionsLabel"
 	>
 		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Comments ({{num}})</h5>
+			<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+				Comments ({{num_of_comments}})
+			</h5>
 			<button
 				type="button"
 				class="btn-close"

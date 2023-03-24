@@ -9,6 +9,7 @@ from blog.views import (
     # tutorial_view,
     HomeView,
     TutorialPostsView,
+    # PostDetailView,
 )
 
 urlpatterns = [
@@ -18,5 +19,5 @@ urlpatterns = [
     path("about/", about_view, name="about"),
     path("search/", search_view, name="search"),
     path("tag/", search_tags_view, name="search_tag"),
-    # path("home_test/", TutorialPostsView.as_view(), name="home_test"),
+    # path("home_test/", PostDetailView.as_view(), name="home_test"),
 ]
