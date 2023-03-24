@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormMixin
 from taggit.models import Tag
 
@@ -98,8 +98,13 @@ def single_post_view(request, slug):
     )
 
 
-def about_view(request):
-    return render(request, "blog/about.html", {"title": "| About"})
+class AboutView(TemplateView):
+    template_name = "blog/about.html"
+    extra_context = {"title": "| About"}
+
+
+# def about_view(request):
+#     return render(request, "blog/about.html", {"title": "| About"})
 
 
 def search_view(request):
