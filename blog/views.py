@@ -1,12 +1,9 @@
 import logging
 
-from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
-from django.views.generic import ListView, DetailView, TemplateView
-from django.views.generic.edit import FormMixin
+from django.views.generic import ListView, TemplateView
 from taggit.models import Tag
 
 from blog.forms import CommentForm
