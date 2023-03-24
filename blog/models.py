@@ -21,7 +21,7 @@ class Post(models.Model):
     content = RichTextUploadingField()
     tags = TaggableManager()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    date_published = models.DateTimeField(auto_now_add=True)
+    date_published = models.DateTimeField()
     status = models.CharField(
         max_length=1,
         choices=STATUS_CHOICES,
