@@ -12,11 +12,14 @@ from blog.models import Comment, Post
 
 logger = logging.getLogger(__name__)
 
+# Constants
 NUM_OF_POSTS = Post.objects.filter(status="p").count()
 NUM_OF_TUTORIAL_POSTS = Post.objects.filter(status="p", category="t").count()
 TAGS = Tag.objects.all()
+PAGES = 10
 
 
+# Home page view
 class HomeView(ListView):
     model = Post
     template_name = "blog/home.html"
@@ -26,33 +29,25 @@ class HomeView(ListView):
         "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
         "tags": TAGS,
     }
-    paginate_by = 10
+    paginate_by = PAGES
 
     def get_queryset(self):
         return Post.objects.prefetch_related("tags").filter(status="p")
 
 
-def tutorial_view(request):
-    posts = Post.objects.filter(status="p", category="t")
-    all_posts = Post.objects.filter(status="p")
+class TutorialPostsView(ListView):
+    model = Post
+    template_name = "blog/posts.html"
+    context_object_name = "posts"
+    extra_context = {
+        "num_of_posts": NUM_OF_POSTS,
+        "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
+        "tags": TAGS,
+    }
+    paginate_by = PAGES
 
-    tags = Tag.objects.all()[:10]
-    paginator = Paginator(posts, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-    num_of_posts = all_posts.count()
-
-    return render(
-        request,
-        "blog/posts.html",
-        {
-            "title": "| Tutorials",
-            "category": "Tutorials",
-            "posts": page_obj,
-            "tags": tags,
-            "num": num_of_posts,
-        },
-    )
+    def get_queryset(self):
+        return Post.objects.prefetch_related("tags").filter(status="p", category="t")
 
 
 def single_post_view(request, slug):
