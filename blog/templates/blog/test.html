@@ -1,37 +1,7 @@
-<h1>Home Test</h1>
-<!--  -->
-<p>Number of all posts: {{num_of_posts}}</p>
-<p>Number of Tutorial posts: {{num_of_tutorial_posts}}</p>
+<h1>Test Search</h1>
 
-<!--  -->
-<p>All tags:</p>
-{% for tag in tags %}
 <ul>
-	{{tag}}
+	{% for post in object_list %}
+	<li>{{ post.title }}</li>
+	{% endfor %}
 </ul>
-{% endfor %}
-<!--  -->
-{% for post in posts %}
-<div>
-	<ul>
-		<li>
-			<!--  -->
-			<br />
-			{{post.date_published |date:'M d, Y'}} <br />
-			{{post.date_published |timesince}}
-
-			<h1>{{post.title}}</h1>
-			<p>{{post.content |truncatewords:10}}</p>
-			{% if post.image %}
-			<img src="{{post.image.url}}" alt="" />
-			{% endif %}
-			<!--  -->
-			{% for tag in post.tags.names %}
-			<ul>
-				<li>{{tag}}</li>
-			</ul>
-			{% endfor %}
-		</li>
-	</ul>
-</div>
-{% endfor %}

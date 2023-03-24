@@ -99,48 +99,49 @@ def single_post_view(request, slug):
 
 
 class AboutView(TemplateView):
+    """Returns a TemplateView of the About"""
+
     template_name = "blog/about.html"
     extra_context = {"title": "| About"}
 
 
-# def about_view(request):
-#     return render(request, "blog/about.html", {"title": "| About"})
+class SearchResultsView(ListView):
+    """Returns posts marching search criteria"""
 
+    model = Post
+    template_name = "blog/search_results.html"
+    context_object_name = "posts"
+    extra_context = {
+        "title": "| Tutorials",
+        "num_of_posts": NUM_OF_POSTS,
+        "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
+        "tags": TAGS,
+    }
 
-def search_view(request):
-    tags = Tag.objects.all()
-
-    query = request.GET.get("q")
-    if query:
-        posts = Post.objects.filter(
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Post.objects.filter(
             Q(title__icontains=query)
             | Q(content__icontains=query)
             | Q(tags__name__icontains=query)
-        ).distinct()
-
-    paginator = Paginator(posts, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-
-    return render(
-        request,
-        "blog/search_results.html",
-        {"title": "search results", "search": query, "posts": page_obj, "tags": tags},
-    )
+        )
+        return object_list
 
 
-def search_tags_view(request):
-    tags = Tag.objects.all()
-    query = request.GET.get("q")
-    if query:
-        posts = Post.objects.filter(Q(tags__name__icontains=query)).distinct()
+class SearchTagsView(ListView):
+    """Returns posts marching tag criteria"""
 
-    paginator = Paginator(posts, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
+    model = Post
+    template_name = "blog/search_results.html"
+    context_object_name = "posts"
+    extra_context = {
+        "title": "| Tutorials",
+        "num_of_posts": NUM_OF_POSTS,
+        "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
+        "tags": TAGS,
+    }
 
-    return render(
-        request,
-        "blog/posts.html",
-        {"title": "search results", "category": query, "posts": page_obj, "tags": tags},
-    )
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Post.objects.filter(Q(tags__name__icontains=query))
+        return object_list
