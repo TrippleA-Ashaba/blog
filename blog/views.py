@@ -127,6 +127,12 @@ class SearchResultsView(ListView):
         )
         return object_list
 
+    def get_context_data(self, **kwargs):
+        query = self.request.GET.get("q")
+        data = super().get_context_data(**kwargs)
+        data["query"] = query
+        return data
+
 
 class SearchTagsView(ListView):
     """Returns posts marching tag criteria"""
@@ -145,3 +151,9 @@ class SearchTagsView(ListView):
         query = self.request.GET.get("q")
         object_list = Post.objects.filter(Q(tags__name__icontains=query))
         return object_list
+
+    def get_context_data(self, **kwargs):
+        query = self.request.GET.get("q")
+        data = super().get_context_data(**kwargs)
+        data["query"] = query
+        return data
