@@ -1,16 +1,16 @@
 <div class="d-flex justify-content-around border-bottom pb-4 mb-4">
 	<div>
-		<h6 class="fs-3 fw-bold text-center">{{posts |length}}</h6>
+		<h6 class="fs-3 fw-bold text-center">{{num_of_posts}}</h6>
 		<p class="fw-light text-center">
-			<i class="bi bi-book text-warning"></i> Post{{posts |pluralize }}
+			<i class="bi bi-book text-warning"></i> Post{{num_of_posts |pluralize }}
 		</p>
 	</div>
 	<div>
-		<h6 class="fs-3 fw-bold text-center">{{tuts |length}}</h6>
+		<h6 class="fs-3 fw-bold text-center">{{num_of_tutorial_posts}}</h6>
 		<p class="fw-light text-center">
 			<i class="bi bi-vector-pen text-success"></i>
 			<!--  -->
-			Tutorial{{tuts |pluralize}}
+			Tutorial{{num_of_tutorial_posts |pluralize}}
 		</p>
 	</div>
 </div>
