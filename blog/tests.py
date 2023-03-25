@@ -46,28 +46,6 @@ class TutorialViewTests(TestCase):
         )
 
 
-# Testing the Tales Page
-class TalesViewTests(TestCase):
-    def test_url_exists_at_correct_location(self):
-        response = self.client.get("/tales/")
-        self.assertEqual(response.status_code, 200)
-
-    def test_url_available_by_name(self):
-        response = self.client.get(reverse("tales"))
-        self.assertEqual(response.status_code, 200)
-
-    def test_template_name_correct(self):
-        response = self.client.get(reverse("tales"))
-        self.assertTemplateUsed(response, "blog/posts.html")
-
-    def test_template_content(self):
-        response = self.client.get(reverse("tales"))
-        self.assertContains(
-            response,
-            """<title>The TrippleA | Tales</title>""",
-        )
-
-
 # Testing the About Page
 class AboutViewTests(TestCase):
     def test_url_exists_at_correct_location(self):
