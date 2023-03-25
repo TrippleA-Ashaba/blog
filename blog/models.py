@@ -1,8 +1,12 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 from accounts.models import CustomUser
+
+STATUS_CHOICES = [("d", "Draft"), ("p", "Published")]
+CATEGORY_CHOICES = [("t", "Tutorial"), ("o", "Other")]
 
 
 # POST model
@@ -15,8 +19,19 @@ class Post(models.Model):
     )
     image = models.ImageField(null=True, blank=True, upload_to="covers")
     content = RichTextUploadingField()
+    tags = TaggableManager()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    date_published = models.DateTimeField(auto_now_add=True)
+    date_published = models.DateTimeField()
+    status = models.CharField(
+        max_length=1,
+        choices=STATUS_CHOICES,
+        default="d",
+    )
+    category = models.CharField(
+        max_length=1,
+        choices=CATEGORY_CHOICES,
+        default="o",
+    )
 
     class Meta:
         ordering = ("-date_published",)

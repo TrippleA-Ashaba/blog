@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Post, Comment
+
+from accounts.models import CustomUser
+
+from blog.models import Comment, Post
 
 
 # Register your models here.
@@ -7,11 +10,24 @@ from .models import Post, Comment
 class PostAdmin(admin.ModelAdmin):
     list_display = (
         "title",
+        "status",
+        "category",
+        "tag_list",
         "date_published",
-        # "category",
-        # "status",
     )
     prepopulated_fields = {"slug": ("title",)}
+    actions = ["make_published"]
+
+    # Adding actions
+    @admin.action(description="Mark selected posts as Published")
+    def make_published(self, request, queryset):
+        queryset.update(status="p")
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related("tags")
+
+    def tag_list(self, obj):
+        return ", ".join(o.name for o in obj.tags.all())
 
 
 @admin.register(Comment)
