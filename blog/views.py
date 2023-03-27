@@ -14,11 +14,26 @@ from blog.models import Comment, Post
 
 logger = logging.getLogger(__name__)
 
-# Constants
+# Global Variables
 NUM_OF_POSTS = Post.objects.filter(status="p").count()
 NUM_OF_TUTORIAL_POSTS = Post.objects.filter(status="p", category="t").count()
 TAGS = Tag.objects.all()
 PAGES = 10
+
+
+def get_query_objects():
+    """Returns a list of all the query objects"""
+    num_of_posts = Post.objects.filter(status="p").count()
+    num_of_tutorial_posts = Post.objects.filter(status="p", category="t").count()
+    tags = Tag.objects.all()
+
+    data = {
+        "num_of_posts": num_of_posts,
+        "num_of_tutorial_posts": num_of_tutorial_posts,
+        "tags": tags,
+    }
+
+    return data
 
 
 # Home page view
@@ -29,9 +44,11 @@ class HomeView(ListView):
     template_name = "blog/home.html"
     context_object_name = "posts"
     extra_context = {
-        "num_of_posts": NUM_OF_POSTS,
-        "num_of_tutorial_posts": NUM_OF_TUTORIAL_POSTS,
-        "tags": TAGS,
+        "num_of_posts": get_query_objects().get("num_of_posts", "None"),
+        "num_of_tutorial_posts": get_query_objects().get(
+            "num_of_tutorial_posts", "None"
+        ),
+        "tags": get_query_objects().get("tags", "None"),
     }
     paginate_by = PAGES
 
